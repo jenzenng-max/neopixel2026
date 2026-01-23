@@ -1,15 +1,16 @@
 # 🏮 敲击感应小灯 (NeoPixel 2026)
 
-## 你的目标 @unplugged
-敲一下，就变亮，再敲一下就灭了！
+## 🏮 敲击感应小灯 @unplugged
+
 ![效果演示：敲击变色](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_demo.gif)
+敲一下，就变亮，再敲一下就灭了！
 加上自己的创意，动手做个类似趣味小灯吧！
 
 ## Step 2: 连接灯带
 
 我们要把灯带和 Micro:bit 连接起来：
 
-- :hand lizard: ![电路原理图：GND接GND，VCC接3V，DIN接P0](/static/neopixel2026_sch.png "3242 ")
+- :hand lizard: ![电路原理图：GND接GND，VCC接3V，DIN接P0](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_sch.png "3GND接GND，VCC接3V，DIN接P0 ")
 说明：
     - 灯带的 **GND** 连到 Micro:bit 的 **GND**。
     - 灯带的 **VCC** (电源) 连到 Micro:bit 的 **3V**。
@@ -20,7 +21,7 @@
 
 ```
 ---
-![h实物接线图：请仔细核对线序](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_wire.gif "3242 ")
+![h实物接线图：请仔细核对线序](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_wire.gif "请仔细核对 ")
 
 
 
