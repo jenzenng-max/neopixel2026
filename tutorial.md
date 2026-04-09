@@ -35,20 +35,38 @@
 2. 设置引脚为 **P0**，灯珠数量为 **10** 颗。
 3.  `||neopixel:Neopixel||` 栏拖入`||neopixel: strip 显示颜色红||`积木。
 
+然后把代码刷入micro:bit,查看灯带是否亮起。
+
+亮起则接线正确且接触良好；
+
+若不亮，请检查接线和代码。
+
 ```blocks
 let strip = neopixel.create(DigitalPin.P0, 10, NeoPixelMode.RGB)
 strip.showColor(neopixel.colors(NeoPixelColors.Red))
 
 ```
 
-## Step 3: 感知震动与开关逻辑
+## Step 3-1: 感知震动与开关逻辑1
 
-我们需要一个变量 `||variables:isOn||` (是否开灯) 来记录状态。
+现在来描述我们想要看到的效果：
 
-* 如果灯现在是 **关** (false)，拍一下就变 **开** (true)。
-* 如果灯现在是 **开** (true)，拍一下就变 **关** (false)。
+我们敲一下，就变亮，再敲一下就灭了！
 
-我们利用加速度传感器来检测敲击（力量 > 1100）。
+那么micro:bit执行的事情是：
+
+* 如果micro:bit的加速度计感受到震动（我们敲一下），灯的状态就从 **开** (true)变成 **关** (true)。
+
+
+
+```
+## Step 3-2: 感知震动与开关逻辑2
+
+所以我们要使用输入变量：加速度值`||input:加速度值||`；输出变量：灯的状态`||variables:isOn||`；
+
+然后按照micro:bit执行的事情从自然语言转化为机器代码；
+
+你来尝试一下吧！遇到问题可以尝试查看提示！
 
 ```blocks
 let isOn = false
@@ -59,10 +77,9 @@ basic.forever(function () {
 })
 
 ```
-
 ## Step 4: 控制开灯
 
-现在让灯根据 `||variables:isOn||` 的状态开关灯。
+最后让灯根据 `||variables:isOn||` 的状态开关灯。
 
 * 如果是 **开**，就显示红色。
 * 如果是 **关**，就清空颜色 (灭灯)。
