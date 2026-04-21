@@ -55,43 +55,50 @@ strip.showColor(neopixel.colors(NeoPixelColors.Red))
 
 那么micro:bit执行的事情是：
 
-* 如果micro:bit的加速度计感受到震动（我们敲一下），灯的状态就从 **开** (true)变成 **关** (true)。
+* 如果micro:bit的加速度计感受到震动（我们敲一下），
+    * 灯的状态就从 **开** (true)变成 **关** (false)。
+    * 灯的状态就从 **关** (false)变成 **开** (true)。
 
+灯的状态就变成**相反** 的状态！
 
 
 ```
 ## Step 3-2: 感知震动与开关逻辑2
 
-所以我们要使用输入变量：加速度值`||input:加速度值||`；输出变量：灯的状态`||variables:isOn||`；
+所以我们要使用输入变量：加速度值`||input:加速度值||`；输出变量：灯的状态`||variables:灯的状态||`；
 
 然后按照micro:bit执行的事情从自然语言转化为机器代码；
 
 你来尝试一下吧！遇到问题可以尝试查看提示！
-
+tips: 感受到敲击，灯的状态就变成**相反** 的状态！
 ```blocks
-let isOn = false
+let 灯的状态 = false
 basic.forever(function () {
     if (input.acceleration(Dimension.Strength) > 1100) {
-        isOn = !isOn
+        灯的状态 = !灯的状态
     }
 })
 
 ```
 ## Step 4: 控制开灯
 
-最后让灯根据 `||variables:isOn||` 的状态开关灯。
+最后让灯根据 `||variables:灯的状态||` 的状态开关灯。
 
 * 如果是 **开**，就显示红色。
 * 如果是 **关**，就清空颜色 (灭灯)。
 * **注意**：最后加一个 500 毫秒的暂停，防止一次敲击被误判为多次。
 
+尝试写一下代码！
+
+写完就下载代码到micro:bit,你的敲击小灯就做完了！
+
 ```blocks
-let isOn = false
+let 灯的状态 = false
 let strip = neopixel.create(DigitalPin.P0, 10, NeoPixelMode.RGB)
 basic.forever(function () {
     if (input.acceleration(Dimension.Strength) > 1100) {
-        isOn = !isOn
-        if (isOn) {
+        灯的状态 = !灯的状态
+        if (灯的状态) {
             strip.showColor(neopixel.colors(NeoPixelColors.Red))
         } else {
             strip.clear()
@@ -107,7 +114,7 @@ basic.forever(function () {
 
 恭喜你！现在把 Micro:bit 塞进纸杯底座，套上画有“2026”/“新年快乐”的 小纸杯
 对着桌子轻轻一拍——你的新年小灯亮了吗？
-
+![效果演示：敲击变色](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_demo.gif)
 快去给爸爸妈妈展示你的科技年货吧！
 
 ```package
