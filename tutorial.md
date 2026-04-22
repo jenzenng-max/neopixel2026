@@ -67,6 +67,7 @@ strip.showColor(neopixel.colors(NeoPixelColors.Red))
 tips: 感受到敲击，灯的状态就变成**相反** 的状态！
 ```blocks
 let LED = false
+
 basic.forever(function () {
     if (input.acceleration(Dimension.Strength) > 1100) {
         LED = !LED
@@ -88,6 +89,7 @@ basic.forever(function () {
 
 ```blocks
 let LED = false
+
 let strip = neopixel.create(DigitalPin.P0, 10, NeoPixelMode.RGB)
 basic.forever(function () {
     if (input.acceleration(Dimension.Strength) > 1100) {
