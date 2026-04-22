@@ -6,28 +6,22 @@
 敲一下，就变亮，再敲一下就灭了！
 加上自己的创意，动手做个类似趣味小灯吧！
 
-## Step 2: 连接灯带
+## Step 1: 连接灯带
 
-我们要把灯带和 Micro:bit 连接起来：
+我们要把灯带和 micro:bit 的扩展板连接起来：
 
-- :hand lizard: ![电路原理图：GND接GND，VCC接3V，DIN接P0](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_sch.png "3GND接GND，VCC接3V，DIN接P0 ")
-说明：
-    - 灯带的 **GND** 连到 Micro:bit 的 **GND**。
-    - 灯带的 **VCC** (电源) 连到 Micro:bit 的 **3V**。
-    - 灯带的 **DIN** (信号) 连到 Micro:bit 的 **P0** 引脚。
-
-
+- :hand lizard: ![电路原理图：GND接GND，VCC接3V，DIN接P0](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_sch.png "GND接GND，VCC接3V，DIN接P0 ")
 ```blocks
 
 ```
 ---
-![h实物接线图：请仔细核对线序](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_wire.gif "请仔细核对 ")
+![实物接线图：请仔细核对线序](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_wire.gif "请仔细核对 ")
 
 
 
 ## Step 2: 初始化灯带
 
-首先，我们需要告诉 Micro:bit 我们连接了灯带。
+首先，我们需要告诉 micro:bit 我们连接了灯带。
 
 在 `||basic:当开机时||` 积木中：
 
@@ -65,24 +59,24 @@ strip.showColor(neopixel.colors(NeoPixelColors.Red))
 ```
 ## Step 3-2: 感知震动与开关逻辑2
 
-所以我们要使用输入变量：加速度值`||input:加速度值||`；输出变量：灯的状态`||variables:灯的状态||`；
+所以我们要使用输入变量：加速度值`||input:加速度值||`；输出变量：灯的状态`||variables:LED||`；
 
 然后按照micro:bit执行的事情从自然语言转化为机器代码；
 
 你来尝试一下吧！遇到问题可以尝试查看提示！
 tips: 感受到敲击，灯的状态就变成**相反** 的状态！
 ```blocks
-let 灯的状态 = false
+let LED = false
 basic.forever(function () {
     if (input.acceleration(Dimension.Strength) > 1100) {
-        灯的状态 = !灯的状态
+        LED = !LED
     }
 })
 
 ```
 ## Step 4: 控制开灯
 
-最后让灯根据 `||variables:灯的状态||` 的状态开关灯。
+最后让灯根据 `||variables:LED||` 的状态开关灯。
 
 * 如果是 **开**，就显示红色。
 * 如果是 **关**，就清空颜色 (灭灯)。
@@ -93,12 +87,12 @@ basic.forever(function () {
 写完就下载代码到micro:bit,你的敲击小灯就做完了！
 
 ```blocks
-let 灯的状态 = false
+let LED = false
 let strip = neopixel.create(DigitalPin.P0, 10, NeoPixelMode.RGB)
 basic.forever(function () {
     if (input.acceleration(Dimension.Strength) > 1100) {
-        灯的状态 = !灯的状态
-        if (灯的状态) {
+        LED = !LED
+        if (LED) {
             strip.showColor(neopixel.colors(NeoPixelColors.Red))
         } else {
             strip.clear()
@@ -112,7 +106,7 @@ basic.forever(function () {
 
 ## 恭喜完成！ @unplugged
 
-恭喜你！现在把 Micro:bit 塞进纸杯底座，套上画有“2026”/“新年快乐”的 小纸杯
+恭喜你！现在把 micro:bit 塞进纸杯底座，套上画有“2026”/“新年快乐”的 小纸杯
 对着桌子轻轻一拍——你的新年小灯亮了吗？
 ![效果演示：敲击变色](https://raw.githubusercontent.com/jenzenng-max/neopixel2026/master/docs/static/neopixel2026_demo.gif)
 快去给爸爸妈妈展示你的科技年货吧！
